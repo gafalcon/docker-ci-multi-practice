@@ -12,13 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build client
-        run: docker build -t gafalcon/docker-practice-multi-client ./client
+        run: docker build -t gabofalc/docker-practice-multi-client ./client
       - name: Build nginx
-        run: docker build -t gafalcon/docker-practice-multi-nginx ./nginx
+        run: docker build -t gabofalc/docker-practice-multi-nginx ./nginx
       - name: Build server
-        run: docker build -t gafalcon/docker-practice-multi-server ./server
+        run: docker build -t gabofalc/docker-practice-multi-server ./server
       - name: Build worker
-        run: docker build -t gafalcon/docker-practice-multi-worker ./worker
+        run: docker build -t gabofalc/docker-practice-multi-worker ./worker
       - name: Login docker hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_ID }}" --password-stdin
       - name: Push images
