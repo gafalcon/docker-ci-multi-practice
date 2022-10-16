@@ -18,7 +18,7 @@ jobs:
       - name: Build server
         run: docker build -t gafalcon/docker-practice-multi-server ./server
       - name: Build worker
-        run: docker build -t gafalcon/docker-practice-multi-worker ./workder
+        run: docker build -t gafalcon/docker-practice-multi-worker ./worker
       - name: Login docker hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_ID }}" --password-stdin
       - name: Push images
