@@ -23,7 +23,7 @@ jobs:
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_ID }}" --password-stdin
       - name: Push images
         run: |
-          docker push gafalcon/docker-practice-multi-client
-          docker push gafalcon/docker-practice-multi-nginx
-          docker push gafalcon/docker-practice-multi-server
-          docker push gafalcon/docker-practice-multi-worker
+          docker push gabofalc/docker-practice-multi-client
+          docker push gabofalc/docker-practice-multi-nginx
+          docker push gabofalc/docker-practice-multi-server
+          docker push gabofalc/docker-practice-multi-worker
