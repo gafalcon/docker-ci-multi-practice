@@ -7,26 +7,26 @@ jobs:
   test:
     uses: "./.github/workflows/test.yaml"
   build:
-    needs: test
+    # needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Build client
-        run: docker build -t gabofalc/docker-practice-multi-client ./client
-      - name: Build nginx
-        run: docker build -t gabofalc/docker-practice-multi-nginx ./nginx
-      - name: Build server
-        run: docker build -t gabofalc/docker-practice-multi-server ./server
-      - name: Build worker
-        run: docker build -t gabofalc/docker-practice-multi-worker ./worker
-      - name: Login docker hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_ID }}" --password-stdin
-      - name: Push images
-        run: |
-          docker push gabofalc/docker-practice-multi-client
-          docker push gabofalc/docker-practice-multi-nginx
-          docker push gabofalc/docker-practice-multi-server
-          docker push gabofalc/docker-practice-multi-worker
+      # - name: Build client
+      #   run: docker build -t gabofalc/docker-practice-multi-client ./client
+      # - name: Build nginx
+      #   run: docker build -t gabofalc/docker-practice-multi-nginx ./nginx
+      # - name: Build server
+      #   run: docker build -t gabofalc/docker-practice-multi-server ./server
+      # - name: Build worker
+      #   run: docker build -t gabofalc/docker-practice-multi-worker ./worker
+      # - name: Login docker hub
+      #   run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_ID }}" --password-stdin
+      # - name: Push images
+      #   run: |
+      #     docker push gabofalc/docker-practice-multi-client
+      #     docker push gabofalc/docker-practice-multi-nginx
+      #     docker push gabofalc/docker-practice-multi-server
+      #     docker push gabofalc/docker-practice-multi-worker
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
       - name: Deploy to EB
@@ -34,7 +34,7 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: Udemymultidockerpractice
+          application_name: udemy_multi_docker_practice
           environment_name: Udemymultidockerpractice-env
           existing_bucket_name: elasticbeanstalk-us-east-1-751999054816
           region: us-east-1
